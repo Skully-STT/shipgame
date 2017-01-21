@@ -3185,7 +3185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bda59a5799a7404bb4afef94efda36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _desiredCliffsInWater: 50
+  _desiredCliffsInWater: 20
   _cliffSpawnRange: 2500
   _cliffPosY: 10
   _minDistanceToShip: 300

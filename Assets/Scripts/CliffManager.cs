@@ -84,7 +84,9 @@ public class CliffManager : MonoBehaviour {
 			pos = (pos - ShipManager.Singleton.transform.position).normalized * _minDistanceToShip;
 		}
 
-	    Instantiate(_cliffPrefabPool[Random.Range(0, _cliffPrefabPool.Length)], pos, Quaternion.identity);
+	    var g = (Instantiate(_cliffPrefabPool[Random.Range(0, _cliffPrefabPool.Length)], pos, Quaternion.identity)) as GameObject;
+
+	    g.transform.localScale *= Random.Range(1f, 10f);
 
 		_currentCliffAmount++;
 	}
