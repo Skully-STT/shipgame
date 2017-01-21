@@ -18,9 +18,12 @@ public class ShipManager : MonoBehaviour
         set
         {
             shipHealth = value > 0 ? value < maxHealth ? value : maxHealth:0;
+			print(shipHealth);
             if (shipHealth == 0)
             {
-                GameManager.Singleton.OnGameOver.Invoke();
+				print("Dead");
+				AudioManager.Singleton.OnGameOver();
+				InGameMenu.Singleton.GameOver();
             }
         }
     }
@@ -42,7 +45,7 @@ public class ShipManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        shipHealth =shipHealth- damage;
+        Shiphealth -= damage;
         StartCoroutine(lostHealthLerp());
     }
 
@@ -56,6 +59,8 @@ public class ShipManager : MonoBehaviour
 	    {
 		    throw new System.InvalidOperationException("Cannot create another instance of the 'ShipManager' class");
 	    }
+
+	    shipHealth = maxHealth;
     }
 
     private IEnumerator lostHealthLerp()

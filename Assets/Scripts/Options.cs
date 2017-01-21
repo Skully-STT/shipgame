@@ -16,6 +16,7 @@ public class Options : MonoBehaviour
     {
         get
         {
+            audiomixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume", 0f));
             return PlayerPrefs.GetFloat("MasterVolume", 0f);
         }
         set
@@ -29,6 +30,7 @@ public class Options : MonoBehaviour
     {
         get
         {
+            audiomixer.SetFloat("EffectVolume", PlayerPrefs.GetFloat("EffectVolume", 0f));
             return PlayerPrefs.GetFloat("EffectVolume", 0f);
         }
         set
@@ -42,6 +44,7 @@ public class Options : MonoBehaviour
     {
         get
         {
+            audiomixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume", 0f));
             return PlayerPrefs.GetFloat("MusicVolume", 0f);
         }
         set
@@ -59,4 +62,11 @@ public class Options : MonoBehaviour
         sldMusicVolume.value = MusicVolume;
     }
 
+    public void Start()
+    {
+        gameObject.SetActive(false);
+        sldMastervolume.value = MasterVolume;
+        sldEffectVolume.value = EffectVolume;
+        sldMusicVolume.value = MusicVolume;
+    }
 }

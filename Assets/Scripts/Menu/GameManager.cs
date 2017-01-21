@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Singleton { get; set; }
 
     public static int highscore;
-    public gameOver OnGameOver;
-    public delegate void gameOver();
 
     public void Awake()
     {

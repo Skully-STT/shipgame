@@ -2,9 +2,10 @@
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(UnityEngine.UI.Button))]
+//[RequireComponent(typeof(UnityEngine.UI.Button))]
 public class ButtonSound : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
 {
+
     public SoundFile highlightSound;
     public SoundFile clickSound;
     private AudioSource audioSource;
@@ -30,6 +31,13 @@ public class ButtonSound : MonoBehaviour, IPointerEnterHandler, IPointerDownHand
                 {
                     clickSound = soundfile;
                 }
+            }
+        }
+        foreach (SoundFile soundfile in soundfiles)
+        {
+            if (soundfile == highlightSound && soundfile ==clickSound)
+            {
+                audioSource.outputAudioMixerGroup = soundfile.audioMixerGroup;
             }
         }
     }

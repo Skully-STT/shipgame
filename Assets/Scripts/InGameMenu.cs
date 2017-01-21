@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class InGameMenu : Menu
 {
+	public static InGameMenu Singleton { get; set; }
+
     public GameObject gameOver;
     public GameObject exitButtons;
     public GameObject confirm;
@@ -19,6 +21,18 @@ public class InGameMenu : Menu
     public Text speedTxt;
     private bool exitClickedOnce = false;
     private bool levelClickedOnce = false;
+
+	void Awake()
+	{
+		if (Singleton == null)
+		{
+			Singleton = this;
+		}
+		else
+		{
+			throw new System.InvalidOperationException("Cannot create another instance of the 'IngameMenu' class");
+		}
+	}
 
     public void Start()
     {
@@ -52,26 +66,7 @@ public class InGameMenu : Menu
 #endif
     }
 
-    public void OnEnable()
-    {
-        
-        StartCoroutine(GetGameManager());
-    }
-
-    private IEnumerator GetGameManager()
-    {
-        while (!GameManager.Singleton)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        GameManager.Singleton.OnGameOver += GameOver;
-    }
-
-    public void OnDisable()
-    {
-        GameManager.Singleton.OnGameOver -= GameOver;
-    }
-
+	// TODO: Call this method
     public void GameOver()
     {
         gameOver.SetActive(true);
