@@ -40,10 +40,12 @@ public class InGameMenu : Menu
         endScore.text = GameManager.highscore.ToString();
         health.fillAmount = (float)ShipManager.Singleton.Shiphealth / 100;
         lostHealth.fillAmount = (float)ShipManager.lostHealth / 100;
+#if UNITY_EDITOR
         if (Input.GetKey(KeyCode.K) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.Escape))
         {
             GameOver();
         }
+#endif
     }
 
     public void OnEnable()
