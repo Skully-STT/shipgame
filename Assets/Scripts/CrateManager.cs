@@ -53,8 +53,8 @@ public class CrateManager : MonoBehaviour {
 			SpawnWaterCrate();
 		}
 
-		// Spawn collected crate on deck
-		Instantiate(_deckCratePrefab, _collectedCrateSpawn.position, Quaternion.identity);
+		// Spawn collected crate on deck with delay
+		Invoke("SpawnDeckCrate", 1f);
 
 		// Play sound
 		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._crateCollect);
@@ -94,5 +94,10 @@ public class CrateManager : MonoBehaviour {
 		Instantiate(_waterCratePrefab, pos , Quaternion.identity);
 	
 		_currentCrateAmount++;
+	}
+
+	void SpawnDeckCrate()
+	{
+		Instantiate(_deckCratePrefab, _collectedCrateSpawn.position, Quaternion.identity);
 	}
 }
