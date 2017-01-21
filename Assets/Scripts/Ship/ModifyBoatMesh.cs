@@ -20,15 +20,15 @@ using System.Collections.Generic;
 
         //The triangles belonging to the part of the boat that's under water
         public List<TriangleData> underWaterTriangleData = new List<TriangleData>();
-
-        public ModifyBoatMesh(GameObject boatObj)
+		
+        public ModifyBoatMesh(GameObject boatObj, MeshFilter boatMeshFilter)
         {
             //Get the transform
             boatTrans = boatObj.transform;
 
             //Init the arrays and lists
-            boatVertices = boatObj.GetComponent<MeshFilter>().mesh.vertices;
-            boatTriangles = boatObj.GetComponent<MeshFilter>().mesh.triangles;
+            boatVertices = boatMeshFilter.mesh.vertices;
+            boatTriangles = boatMeshFilter.mesh.triangles;
 
             //The boat vertices in global position
             boatVerticesGlobal = new Vector3[boatVertices.Length];

@@ -8,6 +8,9 @@ using System.Collections.Generic;
         //Drags
         public GameObject underWaterObj;
 
+		// Boat Mesh Filter
+	    public MeshFilter boatMeshFilter;
+
         //Script that's doing everything needed with the boat mesh, such as finding out which part is above the water
         private ModifyBoatMesh modifyBoatMesh;
 
@@ -26,7 +29,7 @@ using System.Collections.Generic;
             boatRB = gameObject.GetComponent<Rigidbody>();
 
             //Init the script that will modify the boat mesh
-            modifyBoatMesh = new ModifyBoatMesh(gameObject);
+            modifyBoatMesh = new ModifyBoatMesh(gameObject, boatMeshFilter);
 
             //Meshes that are below and above the water
             underWaterMesh = underWaterObj.GetComponent<MeshFilter>().mesh;
