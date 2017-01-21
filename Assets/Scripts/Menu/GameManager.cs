@@ -2,6 +2,8 @@
 
 public class GameManager : MonoBehaviour
 {
+    public static int highscore;
+
     public void Awake()
     {
         DontDestroyOnLoad(this);
