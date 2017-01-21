@@ -20,7 +20,7 @@ public class ShipManager : MonoBehaviour
             shipHealth = value > 0 ? value < maxHealth ? value : maxHealth:0;
             if (shipHealth == 0)
             {
-                GameManager.Instance.OnGameOver.Invoke();
+                GameManager.Singleton.OnGameOver.Invoke();
             }
         }
     }
