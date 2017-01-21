@@ -7,8 +7,6 @@ public class BoatController : MonoBehaviour
     private float currentSpeed;
     private Vector3 lastPosition;
 
-	public int _cliffdamage = 10;
-
     void FixedUpdate()
     {
         CalculateSpeed();
@@ -42,15 +40,7 @@ public class BoatController : MonoBehaviour
 		{
 			return;
 		}
-
-		for (int i = 0; i < collision.transform.childCount; i++)
-		{
-			collision.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
-			collision.transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
-		}
-
-		Destroy(collision.gameObject.GetComponent<Collider>());
-
-		ShipManager.Singleton.TakeDamage(_cliffdamage);
+		
+		CliffManager.Singleton.OnCliffDestroy(collision.gameObject);
 	}
 }

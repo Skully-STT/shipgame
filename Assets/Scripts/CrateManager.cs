@@ -8,6 +8,7 @@ public class CrateManager : MonoBehaviour {
 
 	public int _desiredCratesInWater = 10;
 	public float _crateSpawnRange = 500f;
+	public float _minDistanceToShip = 200f;
 
 	public GameObject _waterCratePrefab, _deckCratePrefab;
 	public Transform _collectedCrateSpawn;
@@ -52,8 +53,11 @@ public class CrateManager : MonoBehaviour {
 			SpawnWaterCrate();
 		}
 
-		// Spawn collected crate on deck
-		Instantiate(_deckCratePrefab, _collectedCrateSpawn.position, Quaternion.identity);
+		// Spawn collected crate on deck with delay
+		Invoke("SpawnDeckCrate", 1f);
+
+		// Play sound
+		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._crateCollect);
 	}
 
     /// <summary>
@@ -65,27 +69,35 @@ public class CrateManager : MonoBehaviour {
     {
         // Delete collected crate
         Destroy(collectedCrate);
-
-        _currentCrateAmount--;
-
-        // Spawn new crate in water if necessary
-        if (_currentCrateAmount < _desiredCratesInWater)
-        {
-            SpawnWaterCrate();
-        }
-
+		
         // score the collected crate
         GameManager.highscore++;
 
+		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._crateScore);
     }
     
     /// <summary>
     /// Spawns another water crate at random position and increases current crate counter
     /// </summary>
     void SpawnWaterCrate()
-	{
-		Instantiate(_waterCratePrefab, new Vector3(Random.Range(-_crateSpawnRange, _crateSpawnRange), 10f, Random.Range(-_crateSpawnRange, _crateSpawnRange)), Quaternion.identity);
+    {
+	    var pos = new Vector3(
+		    Random.Range(-_crateSpawnRange, _crateSpawnRange),
+			    10f,
+			    Random.Range(-_crateSpawnRange, _crateSpawnRange));
+
+	    if (Vector3.Distance(pos, ShipManager.Singleton.transform.position) < _minDistanceToShip)
+	    {
+		    pos = (pos - ShipManager.Singleton.transform.position).normalized * _minDistanceToShip;
+	    }
+
+		Instantiate(_waterCratePrefab, pos , Quaternion.identity);
 	
 		_currentCrateAmount++;
+	}
+
+	void SpawnDeckCrate()
+	{
+		Instantiate(_deckCratePrefab, _collectedCrateSpawn.position, Quaternion.identity);
 	}
 }
