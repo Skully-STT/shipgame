@@ -33,4 +33,20 @@ public class BoatController : MonoBehaviour
             return this.currentSpeed;
         }
     }
+
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag != "Cliff")
+		{
+			return;
+		}
+
+		for (int i = 0; i < collision.transform.childCount; i++)
+		{
+			collision.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+			collision.transform.GetChild(i).gameObject.AddComponent<BoxCollider>();
+		}
+
+		Destroy(collision.gameObject.GetComponent<Collider>());
+	}
 }
