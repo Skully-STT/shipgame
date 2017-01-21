@@ -3623,11 +3623,7 @@ Prefab:
     - target: {fileID: 224987804400840972, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-<<<<<<< refs/remotes/origin/dev
-      value: -191.6949
-=======
       value: -190.89217
->>>>>>> Speed UI Fix + Button Sound fix
       objectReference: {fileID: 0}
     - target: {fileID: 224987804400840972, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
@@ -3657,11 +3653,7 @@ Prefab:
     - target: {fileID: 224217404443670924, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-<<<<<<< refs/remotes/origin/dev
-      value: -191.6949
-=======
       value: 0
->>>>>>> Speed UI Fix + Button Sound fix
       objectReference: {fileID: 0}
     - target: {fileID: 224363897573876246, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
@@ -3676,20 +3668,12 @@ Prefab:
     - target: {fileID: 224363897573876246, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-<<<<<<< refs/remotes/origin/dev
-      value: 126.966095
-=======
       value: 295.3187
->>>>>>> Speed UI Fix + Button Sound fix
       objectReference: {fileID: 0}
     - target: {fileID: 224363897573876246, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-<<<<<<< refs/remotes/origin/dev
-      value: 0
-=======
       value: -71
->>>>>>> Speed UI Fix + Button Sound fix
       objectReference: {fileID: 0}
     - target: {fileID: 224217404443670924, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
