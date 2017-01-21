@@ -44,7 +44,7 @@ public class BoatEngine : MonoBehaviour
     {
         // Debug.Log("boatRB.velocity="+ boatRB.velocity);
         // Debug.Log("Throttle %=" + (int)(currentJetPower/maxPower*100));
-        // TODO: Update GameManager Singleton + Engine Sound
+
         int Throttle = (int) (currentJetPower/maxPower*100);
         ShipManager.Singleton.Speed = Throttle;
         UpdateWaterJet();
