@@ -58,12 +58,21 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	void OnEnable()
-	{
-		GameManager.Singleton.OnGameOver += OnGameOver;
-	}
+    public void OnEnable()
+    {
+        StartCoroutine(GetGameManager());
+    }
 
-	void OnDisable()
+    private IEnumerator GetGameManager()
+    {
+        while (!GameManager.Singleton)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        GameManager.Singleton.OnGameOver += OnGameOver;
+    }
+
+    void OnDisable()
 	{
 		GameManager.Singleton.OnGameOver -= OnGameOver;
 	}

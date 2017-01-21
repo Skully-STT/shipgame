@@ -54,6 +54,16 @@ public class InGameMenu : Menu
 
     public void OnEnable()
     {
+        
+        StartCoroutine(GetGameManager());
+    }
+
+    private IEnumerator GetGameManager()
+    {
+        while (!GameManager.Singleton)
+        {
+            yield return new WaitForEndOfFrame();
+        }
         GameManager.Singleton.OnGameOver += GameOver;
     }
 

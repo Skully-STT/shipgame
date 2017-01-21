@@ -321,56 +321,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114915529400557112, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 073674351fd34034481cfc9bea48eade,
-        type: 3}
-    - target: {fileID: 114688892132930446, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 073674351fd34034481cfc9bea48eade,
-        type: 3}
-    - target: {fileID: 114701307399448076, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 073674351fd34034481cfc9bea48eade,
-        type: 3}
-    - target: {fileID: 114831352057747198, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 073674351fd34034481cfc9bea48eade,
-        type: 3}
-    - target: {fileID: 114341758425510744, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 073674351fd34034481cfc9bea48eade,
-        type: 3}
-    - target: {fileID: 114643516911396662, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 073674351fd34034481cfc9bea48eade,
-        type: 3}
-    - target: {fileID: 114078098542046690, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnLevelSelect
-      objectReference: {fileID: 0}
-    - target: {fileID: 114078098542046690, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114078098542046690, guid: 08f64ebd5fa72a04d8300717eec16a5e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
+    - target: {fileID: 1392252460549394, guid: 08f64ebd5fa72a04d8300717eec16a5e, type: 2}
+      propertyPath: m_Name
+      value: MainMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f64ebd5fa72a04d8300717eec16a5e, type: 2}
