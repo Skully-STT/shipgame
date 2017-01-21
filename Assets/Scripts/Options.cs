@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Options : MonoBehaviour
@@ -8,6 +9,8 @@ public class Options : MonoBehaviour
     public Slider sldMastervolume;
     public Slider sldEffectVolume;
     public Slider sldMusicVolume;
+
+    public AudioMixer audiomixer;
 
     public float MasterVolume
     {
@@ -18,6 +21,7 @@ public class Options : MonoBehaviour
         set
         {
             value = value > 20f ? 20f : value < -80f ? -80f : value;
+            audiomixer.SetFloat("MasterVolume", value);
             PlayerPrefs.SetFloat("MasterVolume", value);
         }
     }
@@ -30,6 +34,7 @@ public class Options : MonoBehaviour
         set
         {
             value = value > 20f ? 20f : value < -80f ? -80f : value;
+            audiomixer.SetFloat("EffectVolume", value);
             PlayerPrefs.SetFloat("EffectVolume", value);
         }
     }
@@ -42,6 +47,7 @@ public class Options : MonoBehaviour
         set
         {
             value = value > 20f ? 20f : value < -80f ? -80f : value;
+            audiomixer.SetFloat("MusicVolume", value);
             PlayerPrefs.SetFloat("MusicVolume", value);
         }
     }

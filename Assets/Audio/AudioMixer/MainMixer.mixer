@@ -16,11 +16,11 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 19029917e1b4fa742aabf09799856208
-    name: MyExposedParam 1
+    name: EffectVolume
   - guid: 8a0c7e0e2ccbe4e4493baec95612a234
-    name: MyExposedParam 2
+    name: MasterVolume
   - guid: 9206fb522ea4d9940a7adeacf4d89492
-    name: MyExposedParam
+    name: MusicVolume
   m_AudioMixerGroupViews:
   - guids:
     - 71c91d7ebe9ff7c46be9784303fe56a2
@@ -76,7 +76,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Effects
+  m_Name: EffectsVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 2a841e4b17d8bfc4eacf85ce2e744d4d
   m_Children: []
@@ -93,7 +93,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Music
+  m_Name: MusicVolume
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 827d6623d35c497438eac15974a591ad
   m_Children: []
