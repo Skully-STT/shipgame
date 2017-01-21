@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 073674351fd34034481cfc9bea48eade
+timeCreated: 1485014172
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hopeless Heart DEMO
+  fontNames:
+  - Hopeless Heart DEMO
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
