@@ -88,11 +88,13 @@ public class InGameMenu : Menu
 
     public void LoadLevel()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     public override void OnLevelSelect(int level)
     {
+        Time.timeScale = 1;
         if (levelClickedOnce == true)
         {
             base.OnLevelSelect(level);
