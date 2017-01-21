@@ -5,19 +5,7 @@ using UnityEngine;
 
 public class ShipManager : MonoBehaviour
 {
-    private static ShipManager instance;
-
-    public static ShipManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new ShipManager();
-            }
-            return instance;
-        }
-    }
+	public static ShipManager Singleton { get; set; }
 
     public int maxHealth = 100;
     private int shipHealth = 100;
@@ -45,8 +33,16 @@ public class ShipManager : MonoBehaviour
         StartCoroutine(lostHealthLerp());
     }
 
-    public void Update()
+    public void Awake()
     {
+	    if (Singleton == null)
+	    {
+		    Singleton = this;
+	    }
+	    else
+	    {
+		    throw new System.InvalidOperationException("Cannot create another instance of the 'ShipManager' class");
+	    }
     }
 
     private IEnumerator lostHealthLerp()
