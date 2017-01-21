@@ -9,6 +9,7 @@ public class CliffManager : MonoBehaviour {
 	public int _desiredCliffsInWater = 50;
 	public float _cliffSpawnRange = 500f;
 	public float _cliffPosY = 10f;
+	public float _minDistanceToShip = 300f;
 	public int _cliffDamage = 10;
 
 	public GameObject[] _cliffPrefabPool;
@@ -72,14 +73,18 @@ public class CliffManager : MonoBehaviour {
     /// Spawns another water crate at random position and increases current crate counter
     /// </summary>
     void SpawnCliff()
-	{
-	    Instantiate(
-		    _cliffPrefabPool[Random.Range(0, _cliffPrefabPool.Length)],
-		    new Vector3(
-			    Random.Range(-_cliffSpawnRange, _cliffSpawnRange),
-					_cliffPosY,
-				    Random.Range(-_cliffSpawnRange, _cliffSpawnRange)),
-		    Quaternion.identity);
+    {
+	    var pos = new Vector3(
+		    Random.Range(-_cliffSpawnRange, _cliffSpawnRange),
+			    _cliffPosY,
+			    Random.Range(-_cliffSpawnRange, _cliffSpawnRange));
+
+		if (Vector3.Distance(pos, ShipManager.Singleton.transform.position) < _minDistanceToShip)
+		{
+			pos = (pos - ShipManager.Singleton.transform.position).normalized * _minDistanceToShip;
+		}
+
+	    Instantiate(_cliffPrefabPool[Random.Range(0, _cliffPrefabPool.Length)], pos, Quaternion.identity);
 
 		_currentCliffAmount++;
 	}

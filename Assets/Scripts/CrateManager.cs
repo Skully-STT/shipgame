@@ -8,6 +8,7 @@ public class CrateManager : MonoBehaviour {
 
 	public int _desiredCratesInWater = 10;
 	public float _crateSpawnRange = 500f;
+	public float _minDistanceToShip = 200f;
 
 	public GameObject _waterCratePrefab, _deckCratePrefab;
 	public Transform _collectedCrateSpawn;
@@ -79,8 +80,18 @@ public class CrateManager : MonoBehaviour {
     /// Spawns another water crate at random position and increases current crate counter
     /// </summary>
     void SpawnWaterCrate()
-	{
-		Instantiate(_waterCratePrefab, new Vector3(Random.Range(-_crateSpawnRange, _crateSpawnRange), 10f, Random.Range(-_crateSpawnRange, _crateSpawnRange)), Quaternion.identity);
+    {
+	    var pos = new Vector3(
+		    Random.Range(-_crateSpawnRange, _crateSpawnRange),
+			    10f,
+			    Random.Range(-_crateSpawnRange, _crateSpawnRange));
+
+	    if (Vector3.Distance(pos, ShipManager.Singleton.transform.position) < _minDistanceToShip)
+	    {
+		    pos = (pos - ShipManager.Singleton.transform.position).normalized * _minDistanceToShip;
+	    }
+
+		Instantiate(_waterCratePrefab, pos , Quaternion.identity);
 	
 		_currentCrateAmount++;
 	}
