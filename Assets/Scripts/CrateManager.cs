@@ -68,15 +68,7 @@ public class CrateManager : MonoBehaviour {
     {
         // Delete collected crate
         Destroy(collectedCrate);
-
-        _currentCrateAmount--;
-
-        // Spawn new crate in water if necessary
-        if (_currentCrateAmount < _desiredCratesInWater)
-        {
-            SpawnWaterCrate();
-        }
-
+		
         // score the collected crate
         GameManager.highscore++;
 
