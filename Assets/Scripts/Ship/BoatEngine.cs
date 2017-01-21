@@ -3,6 +3,9 @@ using System.Collections;
 
 public class BoatEngine : MonoBehaviour
 {
+	public GameObject _steeringWheel;
+	public float _steeringWheelSpeed = 1f;
+
     //Drags
     public Transform waterJetTransform;
 
@@ -64,15 +67,21 @@ public class BoatEngine : MonoBehaviour
             }
         }
 
+	    float wheelRotZ = 0f;
+
         //Steer left
         if (Input.GetKey(KeyCode.A))
         {
             WaterJetRotation_Y = waterJetTransform.localEulerAngles.y + 2f;
 
-            if (WaterJetRotation_Y > 30f && WaterJetRotation_Y < 270f)
-            {
-                WaterJetRotation_Y = 30f;
-            }
+	        if (WaterJetRotation_Y > 30f && WaterJetRotation_Y < 270f)
+	        {
+		        WaterJetRotation_Y = 30f;
+	        }
+	        else
+	        {
+		        wheelRotZ += _steeringWheelSpeed * Time.deltaTime;
+	        }
 
             Vector3 newRotation = new Vector3(0f, WaterJetRotation_Y, 0f);
 
@@ -87,11 +96,20 @@ public class BoatEngine : MonoBehaviour
             {
                 WaterJetRotation_Y = 330f;
             }
+			else
+            {
+	            wheelRotZ -= _steeringWheelSpeed * Time.deltaTime;
+            }
 
             Vector3 newRotation = new Vector3(0f, WaterJetRotation_Y, 0f);
 
             waterJetTransform.localEulerAngles = newRotation;
         }
+
+	    _steeringWheel.transform.rotation = Quaternion.Euler(
+		    _steeringWheel.transform.rotation.eulerAngles.x,
+		    _steeringWheel.transform.rotation.eulerAngles.y,
+		    _steeringWheel.transform.rotation.eulerAngles.z + wheelRotZ);
     }
 
     void UpdateWaterJet()
