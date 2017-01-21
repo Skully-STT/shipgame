@@ -6,13 +6,33 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: ship_hull_proxy
+    100004: steering_wheel_proxy
+    100006: wheel_left_proxy
+    100008: wheel_right_proxy
     400000: //RootNode
+    400002: ship_hull_proxy
+    400004: steering_wheel_proxy
+    400006: wheel_left_proxy
+    400008: wheel_right_proxy
     2300000: //RootNode
+    2300002: ship_hull_proxy
+    2300004: steering_wheel_proxy
+    2300006: wheel_left_proxy
+    2300008: wheel_right_proxy
     3300000: //RootNode
+    3300002: ship_hull_proxy
+    3300004: steering_wheel_proxy
+    3300006: wheel_left_proxy
+    3300008: wheel_right_proxy
     4300000: Ship_Hull_Proxy
+    4300002: steering_wheel_proxy
+    4300004: ship_hull_proxy
+    4300006: wheel_right_proxy
+    4300008: wheel_left_proxy
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
