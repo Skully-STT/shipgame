@@ -56,10 +56,33 @@ public class CrateManager : MonoBehaviour {
 		Instantiate(_deckCratePrefab, _collectedCrateSpawn.position, Quaternion.identity);
 	}
 
-	/// <summary>
-	/// Spawns another water crate at random position and increases current crate counter
-	/// </summary>
-	void SpawnWaterCrate()
+    /// <summary>
+    /// To be called when a crate floating in the water was collected by the ship
+    /// Destroys collecte crate, spawns one on deck and if needed another water crate
+    /// </summary>
+    /// <param name="collectedCrate">Reference to the collected crate's gameobject</param>
+    public void OnCrateScore(GameObject collectedCrate)
+    {
+        // Delete collected crate
+        Destroy(collectedCrate);
+
+        _currentCrateAmount--;
+
+        // Spawn new crate in water if necessary
+        if (_currentCrateAmount < _desiredCratesInWater)
+        {
+            SpawnWaterCrate();
+        }
+
+        // score the collected crate
+        GameManager.highscore++;
+
+    }
+    
+    /// <summary>
+    /// Spawns another water crate at random position and increases current crate counter
+    /// </summary>
+    void SpawnWaterCrate()
 	{
 		Instantiate(_waterCratePrefab, new Vector3(Random.Range(-_crateSpawnRange, _crateSpawnRange), 10f, Random.Range(-_crateSpawnRange, _crateSpawnRange)), Quaternion.identity);
 	
