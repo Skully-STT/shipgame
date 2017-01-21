@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InGameMenu : Menu
 {
+    public GameObject gameOver;
     public GameObject exitButtons;
     public GameObject confirm;
     public Text score;
+    public Text endScore;
     public Image health;
     public Image lostHealth;
     private bool exitClickedOnce = false;
@@ -34,8 +37,29 @@ public class InGameMenu : Menu
             Time.timeScale = Time.timeScale == 1 ? 0 : 1;
         }
         score.text = GameManager.highscore.ToString();
-        health.fillAmount = (float)ShipManager.shipHealth / 100;
+        endScore.text = GameManager.highscore.ToString();
+        health.fillAmount = (float)ShipManager.Instance.Shiphealth / 100;
         lostHealth.fillAmount = (float)ShipManager.lostHealth / 100;
+        if (Input.GetKey(KeyCode.K) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.Escape))
+        {
+            GameOver();
+        }
+    }
+
+    public void OnEnable()
+    {
+        GameManager.Instance.OnGameOver += GameOver;
+    }
+
+    public void OnDisable()
+    {
+        GameManager.Instance.OnGameOver -= GameOver;
+    }
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public override void OnExitClick()
@@ -60,6 +84,10 @@ public class InGameMenu : Menu
         levelClickedOnce = false;
     }
 
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public override void OnLevelSelect(int level)
     {
