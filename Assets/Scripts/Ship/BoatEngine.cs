@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking.NetworkSystem;
 
 public class BoatEngine : MonoBehaviour
 {
@@ -41,7 +42,9 @@ public class BoatEngine : MonoBehaviour
 
     void FixedUpdate()
     {
-       // Debug.Log("boatRB.velocity="+ boatRB.velocity);
+        // Debug.Log("boatRB.velocity="+ boatRB.velocity);
+        // Debug.Log("Throttle %=" + (int)(currentJetPower/maxPower*100));
+        // TODO: Update GameManager Singleton + Engine Sound
         UpdateWaterJet();
     }
 
