@@ -1,35 +1,32 @@
 fileFormatVersion: 2
-guid: cbfe41039e9e1834cb80fce7b9dcf059
-timeCreated: 1484957229
+guid: 18ed56d3e8a40b74d8800159167d8f0a
+timeCreated: 1485033030
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: ship_hull_proxy
-    100004: steering_wheel_proxy
-    100006: wheel_left_proxy
-    100008: wheel_right_proxy
-    400000: //RootNode
-    400002: ship_hull_proxy
-    400004: steering_wheel_proxy
-    400006: wheel_left_proxy
-    400008: wheel_right_proxy
-    2300000: //RootNode
-    2300002: ship_hull_proxy
-    2300004: steering_wheel_proxy
-    2300006: wheel_left_proxy
-    2300008: wheel_right_proxy
-    3300000: //RootNode
-    3300002: ship_hull_proxy
-    3300004: steering_wheel_proxy
-    3300006: wheel_left_proxy
-    3300008: wheel_right_proxy
-    4300000: Ship_Hull_Proxy
-    4300002: steering_wheel_proxy
-    4300004: ship_hull_proxy
-    4300006: wheel_right_proxy
-    4300008: wheel_left_proxy
+    100000: Ship_Hull
+    100002: //RootNode
+    100004: steering_wheel
+    100006: wheel_left
+    100008: wheel_right
+    400000: Ship_Hull
+    400002: //RootNode
+    400004: steering_wheel
+    400006: wheel_left
+    400008: wheel_right
+    2300000: Ship_Hull
+    2300002: steering_wheel
+    2300004: wheel_left
+    2300006: wheel_right
+    3300000: Ship_Hull
+    3300002: steering_wheel
+    3300004: wheel_left
+    3300006: wheel_right
+    4300000: Ship_Hull
+    4300002: steering_wheel
+    4300004: wheel_right
+    4300006: wheel_left
     9500000: //RootNode
   materials:
     importMaterials: 0
