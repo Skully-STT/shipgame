@@ -10,8 +10,12 @@ public class AudioManager : MonoBehaviour
 	public AudioClip _soundtrackIntro;
 	public AudioClip _soundtrack;
 	public AudioClip _gameOver;
+	public AudioClip _crateCollect;
+	public AudioClip _crateScore;
+	public AudioClip _shipCrash;
 
-	AudioSource _audioSource;
+	public AudioSource _audioSourceEffects;
+	AudioSource _audioSourceSoundtrack;
 
 	float _startTime;
 
@@ -26,29 +30,31 @@ public class AudioManager : MonoBehaviour
 			throw new System.InvalidOperationException("Cannot create another instance of the 'AudioManager' class");
 		}
 
-		_audioSource = GetComponent<AudioSource>();
+		_audioSourceSoundtrack = GetComponent<AudioSource>();
 	}
 
 	void Start()
 	{
-		_audioSource.clip = _soundtrackIntro;
-		_audioSource.Play();
+		_audioSourceSoundtrack.clip = _soundtrackIntro;
+		_audioSourceSoundtrack.Play();
+
+		_audioSourceEffects.loop = false;
 
 		_startTime = Time.time;
 	}
 
 	void Update()
 	{
-		if (_audioSource.clip == _soundtrack)
+		if (_audioSourceSoundtrack.clip == _soundtrack)
 		{
 			return;
 		}
 
 		if (Time.time >= _startTime + _soundtrackIntro.length)
 		{
-			_audioSource.clip = _soundtrack;
-			_audioSource.Play();
-			_audioSource.loop = true;
+			_audioSourceSoundtrack.clip = _soundtrack;
+			_audioSourceSoundtrack.Play();
+			_audioSourceSoundtrack.loop = true;
 		}
 	}
 
@@ -65,8 +71,14 @@ public class AudioManager : MonoBehaviour
 	public void OnGameOver()
 	{
 		print("Game Over, play game over sound");
-		_audioSource.clip = _gameOver;
-		_audioSource.Play();
-		_audioSource.loop = false;
+		_audioSourceSoundtrack.clip = _gameOver;
+		_audioSourceSoundtrack.Play();
+		_audioSourceSoundtrack.loop = false;
+	}
+
+	public void PlayEffect(AudioClip clip)
+	{
+		_audioSourceEffects.clip = clip;
+		_audioSourceEffects.Play();
 	}
 }

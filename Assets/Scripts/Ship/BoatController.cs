@@ -52,5 +52,8 @@ public class BoatController : MonoBehaviour
 		Destroy(collision.gameObject.GetComponent<Collider>());
 
 		ShipManager.Singleton.TakeDamage(_cliffdamage);
+
+		// Play Sound
+		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._shipCrash);
 	}
 }

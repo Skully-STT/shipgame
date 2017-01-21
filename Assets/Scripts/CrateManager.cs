@@ -54,6 +54,9 @@ public class CrateManager : MonoBehaviour {
 
 		// Spawn collected crate on deck
 		Instantiate(_deckCratePrefab, _collectedCrateSpawn.position, Quaternion.identity);
+
+		// Play sound
+		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._crateCollect);
 	}
 
     /// <summary>
@@ -77,6 +80,7 @@ public class CrateManager : MonoBehaviour {
         // score the collected crate
         GameManager.highscore++;
 
+		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._crateScore);
     }
     
     /// <summary>
