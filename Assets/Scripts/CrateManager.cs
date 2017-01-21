@@ -61,8 +61,8 @@ public class CrateManager : MonoBehaviour {
 	/// </summary>
 	void SpawnWaterCrate()
 	{
-			Instantiate(_waterCratePrefab, new Vector3(Random.Range(-_crateSpawnRange, _crateSpawnRange), 10f, Random.Range(-_crateSpawnRange, _crateSpawnRange)), Quaternion.identity);
-		
-			_currentCrateAmount++;
+		Instantiate(_waterCratePrefab, new Vector3(Random.Range(-_crateSpawnRange, _crateSpawnRange), 10f, Random.Range(-_crateSpawnRange, _crateSpawnRange)), Quaternion.identity);
+	
+		_currentCrateAmount++;
 	}
 }
