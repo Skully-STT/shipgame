@@ -6,8 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: "Assets/Scenes/MainMen\xFC.unity"
   - enabled: 1
-    path: Assets/Scenes/01 - Upper Dock Steering.unity
-  - enabled: 1
-    path: Assets/Scenes/02 - Lower Dock.unity
+    path: Assets/Scenes/01 - Upper Dock.unity
