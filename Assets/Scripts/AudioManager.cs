@@ -60,12 +60,12 @@ public class AudioManager : MonoBehaviour
 
 	void OnEnable()
 	{
-		GameManager.Instance.OnGameOver += OnGameOver;
+		GameManager.Singleton.OnGameOver += OnGameOver;
 	}
 
 	void OnDisable()
 	{
-		GameManager.Instance.OnGameOver -= OnGameOver;
+		GameManager.Singleton.OnGameOver -= OnGameOver;
 	}
 
 	public void OnGameOver()

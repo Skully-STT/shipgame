@@ -1720,12 +1720,12 @@ Prefab:
     - target: {fileID: 224182863363393198, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 505.06775
       objectReference: {fileID: 0}
     - target: {fileID: 224498710438388820, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1127.1016
       objectReference: {fileID: 0}
     - target: {fileID: 224182863363393198, guid: eaeea41f3cc643546a65f26456a6db3d,
         type: 2}
@@ -3028,6 +3028,7 @@ GameObject:
   - component: {fileID: 1609312052}
   - component: {fileID: 1609312051}
   - component: {fileID: 1609312053}
+  - component: {fileID: 1609312054}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3048,6 +3049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _desiredCratesInWater: 10
   _crateSpawnRange: 500
+  _minDistanceToShip: 200
   _waterCratePrefab: {fileID: 1360415117942108, guid: 0331204683060344caac9f213503259e,
     type: 2}
   _deckCratePrefab: {fileID: 1360415117942108, guid: c509c04b1821d8a4d93ab7886eba772c,
@@ -3180,6 +3182,7 @@ MonoBehaviour:
   _desiredCliffsInWater: 50
   _cliffSpawnRange: 2500
   _cliffPosY: 10
+  _minDistanceToShip: 300
   _cliffDamage: 10
   _cliffPrefabPool:
   - {fileID: 1194526319150544, guid: ba608e330f45c3f41b7c9e8f8008af81, type: 2}
@@ -3187,6 +3190,17 @@ MonoBehaviour:
   - {fileID: 1285777133441736, guid: 5fda0e283a1bb2e43834cae089605cdf, type: 2}
   - {fileID: 1877344851678526, guid: 4479aa874bb19f24ba8401367fee8028, type: 2}
   - {fileID: 1231379875806032, guid: d0b731bdbe44f1c4a82bc6d954441704, type: 2}
+--- !u!114 &1609312054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609312048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a799a39865e8af44826b0edbce93542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1651188669
 Prefab:
   m_ObjectHideFlags: 0

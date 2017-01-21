@@ -54,12 +54,12 @@ public class InGameMenu : Menu
 
     public void OnEnable()
     {
-        GameManager.Instance.OnGameOver += GameOver;
+        GameManager.Singleton.OnGameOver += GameOver;
     }
 
     public void OnDisable()
     {
-        GameManager.Instance.OnGameOver -= GameOver;
+        GameManager.Singleton.OnGameOver -= GameOver;
     }
 
     public void GameOver()
