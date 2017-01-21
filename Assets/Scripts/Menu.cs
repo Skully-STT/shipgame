@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
-	public void OnPlayClick()
+	public virtual void OnLevelSelect(int level)
 	{
-		SceneManager.LoadScene(1);
+		SceneManager.LoadScene(level);
 	}
 
-	public void OnExitClick()
+	public virtual void OnExitClick()
 	{
+        Debug.Log("EXIT!!!!!11");
+        PlayerPrefs.Save();
 		Application.Quit();
 	}
 }
