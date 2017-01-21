@@ -280,7 +280,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1591568249255660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12786865, y: 716, z: 772.0575}
+  m_LocalPosition: {x: -0.12786865, y: 716, z: 879}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 4109579958682418}
@@ -751,7 +751,7 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_InflateMesh: 1
-  m_SkinWidth: 2.22
+  m_SkinWidth: 6.42
   m_Mesh: {fileID: 0}
 --- !u!65 &65549499039551086
 BoxCollider:
@@ -896,8 +896,8 @@ MonoBehaviour:
   _steeringWheel: {fileID: 1567724488186996}
   _steeringWheelSpeed: 50
   waterJetTransform: {fileID: 4520286340277126}
-  powerFactor: 2500
-  maxPower: 200000
+  powerFactor: 3000
+  maxPower: 300000
   currentJetPower: 0
 --- !u!114 &114912398850603122
 MonoBehaviour:
