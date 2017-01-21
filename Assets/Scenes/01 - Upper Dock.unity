@@ -172,48 +172,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45139809}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &67123471
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -186.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 62.714195
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 172.64877
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4493586974683156, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a7aff32fd0f975e458ed6ff85bcc192e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &175752249
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +927,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 03b23e34da479c04abf799d435e0e06c, type: 2}
+  - {fileID: 2100000, guid: a5f2339f242f6cc41a982ec55ea3c201, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
