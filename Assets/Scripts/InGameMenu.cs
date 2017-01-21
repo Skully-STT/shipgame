@@ -15,6 +15,8 @@ public class InGameMenu : Menu
     public Text endScore;
     public Image health;
     public Image lostHealth;
+    public Image speedImg;
+    public Text speedTxt;
     private bool exitClickedOnce = false;
     private bool levelClickedOnce = false;
 
@@ -40,6 +42,8 @@ public class InGameMenu : Menu
         endScore.text = GameManager.highscore.ToString();
         health.fillAmount = (float)ShipManager.Singleton.Shiphealth / 100;
         lostHealth.fillAmount = (float)ShipManager.lostHealth / 100;
+        speedImg.fillAmount = ShipManager.Singleton.Speed / 100;
+        speedTxt.text = ShipManager.Singleton.Speed.ToString()+"%";
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.K) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.Escape))
         {

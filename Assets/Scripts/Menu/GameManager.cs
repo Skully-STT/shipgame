@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
         }
     }
     public static int highscore;
-        public gameOver OnGameOver;
-        public delegate void gameOver();
+    public gameOver OnGameOver;
+    public delegate void gameOver();
 
     public void Awake()
     {

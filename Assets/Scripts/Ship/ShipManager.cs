@@ -27,6 +27,19 @@ public class ShipManager : MonoBehaviour
     internal static float lostHealth = 100;
     private float lostHealtOld;
 
+    private float speed;
+    public float Speed
+    {
+        get
+        {
+            return speed;
+        }
+        set
+        {
+            speed = value > 100 ? 100 : value < 0 ? 0 : value;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         shipHealth =shipHealth- damage;
