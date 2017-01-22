@@ -13,8 +13,10 @@ public class AudioManager : MonoBehaviour
 	public AudioClip _crateCollect;
 	public AudioClip _crateScore;
 	public AudioClip _shipCrash;
+	public AudioClip _engine;
 
 	public AudioSource _audioSourceEffects;
+	public AudioSource _audioSourceEngine;
 	AudioSource _audioSourceSoundtrack;
 
 	float _startTime;
@@ -38,6 +40,10 @@ public class AudioManager : MonoBehaviour
 		_audioSourceSoundtrack.clip = _soundtrackIntro;
 		_audioSourceSoundtrack.Play();
 
+		_audioSourceEngine.clip = _engine;
+		_audioSourceEngine.loop = true;
+		_audioSourceEngine.Play();
+
 		_audioSourceEffects.loop = false;
 
 		_startTime = Time.time;
@@ -45,6 +51,8 @@ public class AudioManager : MonoBehaviour
 
 	void Update()
 	{
+		_audioSourceEngine.pitch = .75f + ShipManager.Singleton.Speed * .0025f;
+
 		if (_audioSourceSoundtrack.clip == _soundtrack)
 		{
 			return;
@@ -56,16 +64,6 @@ public class AudioManager : MonoBehaviour
 			_audioSourceSoundtrack.Play();
 			_audioSourceSoundtrack.loop = true;
 		}
-	}
-
-    public void OnEnable()
-    {
-        GameManager.Singleton.OnGameOver += OnGameOver;
-    }
-
-    void OnDisable()
-	{
-		GameManager.Singleton.OnGameOver -= OnGameOver;
 	}
 
 	public void OnGameOver()
