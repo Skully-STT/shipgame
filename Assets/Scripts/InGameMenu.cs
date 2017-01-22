@@ -68,7 +68,6 @@ public class InGameMenu : Menu
 #endif
     }
 
-	// TODO: Call this method
     public void GameOver()
     {
         gameOver.SetActive(true);
