@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+
 #if UNITY_EDITOR
+
 using UnityEditor;
+
 #endif
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InGameMenu : Menu
 {
-	public static InGameMenu Singleton { get; set; }
+    public static InGameMenu Singleton { get; set; }
 
     public GameObject gameOver;
     public GameObject exitButtons;
@@ -19,22 +21,23 @@ public class InGameMenu : Menu
     public Text endScore;
     public Image health;
     public Image lostHealth;
-    public Image speedImg;
-    public Text speedTxt;
+    public Image lowLife;
+    public GameObject speed;
     private bool exitClickedOnce = false;
     private bool levelClickedOnce = false;
+    public int alarmAktivValue;
 
-	void Awake()
-	{
-		if (Singleton == null)
-		{
-			Singleton = this;
-		}
-		else
-		{
-			throw new System.InvalidOperationException("Cannot create another instance of the 'IngameMenu' class");
-		}
-	}
+    private void Awake()
+    {
+        if (Singleton == null)
+        {
+            Singleton = this;
+        }
+        else
+        {
+            throw new System.InvalidOperationException("Cannot create another instance of the 'IngameMenu' class");
+        }
+    }
 
     public void Start()
     {
@@ -56,10 +59,16 @@ public class InGameMenu : Menu
         }
         score.text = GameManager.highscore.ToString();
         endScore.text = GameManager.highscore.ToString();
+        if (ShipManager.Singleton.Shiphealth < alarmAktivValue)
+        {
+            lowLife.gameObject.SetActive(true);
+        }
         health.fillAmount = (float)ShipManager.Singleton.Shiphealth / 100;
         lostHealth.fillAmount = (float)ShipManager.lostHealth / 100;
-        speedImg.fillAmount = ShipManager.Singleton.Speed / 100;
-        speedTxt.text = ShipManager.Singleton.Speed.ToString()+"%";
+        speed.transform.rotation = new Quaternion();
+        speed.transform.Rotate(new Vector3(0, 0, -(ShipManager.Singleton.Speed * 1.8f)));
+        //speedImg.fillAmount = ShipManager.Singleton.Speed / 100;
+        //speedTxt.text = ShipManager.Singleton.Speed.ToString()+"%";
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.K) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.Escape))
         {
@@ -98,15 +107,14 @@ public class InGameMenu : Menu
 
     public void LoadLevel()
     {
-        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
     public override void OnLevelSelect(int level)
     {
-        Time.timeScale = 1;
         if (levelClickedOnce == true)
         {
+            Time.timeScale = 1;
             base.OnLevelSelect(level);
         }
         else
