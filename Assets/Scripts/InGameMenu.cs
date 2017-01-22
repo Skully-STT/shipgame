@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -52,25 +54,25 @@ public class InGameMenu : Menu
 #endif
     }
 
-    public void OnEnable()
-    {
+    //public void OnEnable()
+    //{
         
-        StartCoroutine(GetGameManager());
-    }
+    //    StartCoroutine(GetGameManager());
+    //}
 
-    private IEnumerator GetGameManager()
-    {
-        while (!GameManager.Singleton)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        GameManager.Singleton.OnGameOver += GameOver;
-    }
+    //private IEnumerator GetGameManager()
+    //{
+    //    while (!GameManager.Singleton)
+    //    {
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //    GameManager.Singleton.OnGameOver += GameOver;
+    //}
 
-    public void OnDisable()
-    {
-        GameManager.Singleton.OnGameOver -= GameOver;
-    }
+    //public void OnDisable()
+    //{
+    //    GameManager.Singleton.OnGameOver -= GameOver;
+    //}
 
     public void GameOver()
     {

@@ -39,13 +39,6 @@ namespace UnityStandardAssets.Water
         // camera will just work!
         public void OnWillRenderObject()
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                // If the code below is executed in the editor while the game is not playing, objects reflected can not be selected properly making development impossible
-                return;
-            }
-#endif
             if (!enabled || !GetComponent<Renderer>() || !GetComponent<Renderer>().sharedMaterial ||
                 !GetComponent<Renderer>().enabled)
             {
@@ -106,10 +99,13 @@ namespace UnityStandardAssets.Water
                 Vector4 clipPlane = CameraSpacePlane(reflectionCamera, pos, normal, 1.0f);
                 reflectionCamera.projectionMatrix = cam.CalculateObliqueMatrix(clipPlane);
 
-                reflectionCamera.cullingMask = ~(1 << 4) & reflectLayers.value; // never render water layer
+				// Set custom culling matrix from the current camera
+				reflectionCamera.cullingMatrix = cam.projectionMatrix * cam.worldToCameraMatrix;
+
+				reflectionCamera.cullingMask = ~(1 << 4) & reflectLayers.value; // never render water layer
                 reflectionCamera.targetTexture = m_ReflectionTexture;
                 bool oldCulling = GL.invertCulling;
-				GL.invertCulling = !oldCulling;
+                GL.invertCulling = !oldCulling;
                 reflectionCamera.transform.position = newpos;
                 Vector3 euler = cam.transform.eulerAngles;
                 reflectionCamera.transform.eulerAngles = new Vector3(-euler.x, euler.y, euler.z);
@@ -129,7 +125,10 @@ namespace UnityStandardAssets.Water
                 Vector4 clipPlane = CameraSpacePlane(refractionCamera, pos, normal, -1.0f);
                 refractionCamera.projectionMatrix = cam.CalculateObliqueMatrix(clipPlane);
 
-                refractionCamera.cullingMask = ~(1 << 4) & refractLayers.value; // never render water layer
+				// Set custom culling matrix from the current camera
+				refractionCamera.cullingMatrix = cam.projectionMatrix * cam.worldToCameraMatrix;
+
+				refractionCamera.cullingMask = ~(1 << 4) & refractLayers.value; // never render water layer
                 refractionCamera.targetTexture = m_RefractionTexture;
                 refractionCamera.transform.position = cam.transform.position;
                 refractionCamera.transform.rotation = cam.transform.rotation;
@@ -262,14 +261,6 @@ namespace UnityStandardAssets.Water
         // On-demand create any objects we need for water
         void CreateWaterObjects(Camera currentCamera, out Camera reflectionCamera, out Camera refractionCamera)
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                // If the code below is executed in the editor while the game is not playing, objects reflected can not be selected properly making development impossible
-                reflectionCamera = refractionCamera = null;
-                return;
-            }
-#endif
             WaterMode mode = GetWaterMode();
 
             reflectionCamera = null;
@@ -351,7 +342,7 @@ namespace UnityStandardAssets.Water
 
         WaterMode FindHardwareWaterSupport()
         {
-            if (!SystemInfo.supportsRenderTextures || !GetComponent<Renderer>())
+            if (!GetComponent<Renderer>())
             {
                 return WaterMode.Simple;
             }
