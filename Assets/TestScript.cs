@@ -79,7 +79,14 @@ public class TestScript : MonoBehaviour
         }
         if (count>0)
         {
-            rigidbody.AddForceAtPosition(waterUpDrag, new Vector3(vec3.x / count, vec3.y / count, vec3.z / count));
+            if (transform.position.y < 0)
+            {
+                rigidbody.AddForceAtPosition(waterUpDrag, new Vector3(vec3.x / count, vec3.y / count, vec3.z / count));
+            }
+            else
+            {
+                rigidbody.AddForceAtPosition(waterUpDrag*0.8f, new Vector3(vec3.x / count, vec3.y / count, vec3.z / count));
+            }
         }
         else
         {
