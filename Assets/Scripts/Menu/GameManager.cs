@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
 	    {
 		    throw new System.InvalidOperationException("Cannot create another instance of the 'GameManager' class");
 	    }
-
-        DontDestroyOnLoad(this);
     }
 
     public void ExitGame()
