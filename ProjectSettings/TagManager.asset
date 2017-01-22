@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Crate
   - Cliff
+  - Fire
+  - CrateOnDeck
   layers:
   - Default
   - TransparentFX

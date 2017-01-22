@@ -7,7 +7,7 @@ public class CrateScorer : MonoBehaviour {
     void OnTriggerEnter(Collider collider)
     {
         Debug.Log("OnTriggerEnter Crate"+ collider.name);
-        if (collider.tag != "Crate")
+        if (collider.tag != "CrateOnDeck")
         {
             return;
         }
