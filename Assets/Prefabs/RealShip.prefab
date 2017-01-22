@@ -1167,7 +1167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _steeringWheel: {fileID: 1567724488186996}
-  _steeringWheelSpeed: 50
+  _leftPaddleWheel: {fileID: 1733563408096898}
+  _rightPaddleWheel: {fileID: 1073216161714636}
+  _steeringWheelSpeed: 150
+  _paddleWheelSpeed: 50
   waterJetTransform: {fileID: 4520286340277126}
   powerFactor: 3000
   maxPower: 300000

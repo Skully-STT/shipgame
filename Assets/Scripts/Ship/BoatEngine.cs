@@ -4,8 +4,9 @@ using UnityEngine.Networking.NetworkSystem;
 
 public class BoatEngine : MonoBehaviour
 {
-	public GameObject _steeringWheel;
+	public GameObject _steeringWheel, _leftPaddleWheel, _rightPaddleWheel;
 	public float _steeringWheelSpeed = 1f;
+	public float _paddleWheelSpeed = 1f;
 
     //Drags
     public Transform waterJetTransform;
@@ -72,7 +73,7 @@ public class BoatEngine : MonoBehaviour
             }
         }
 
-	    float wheelRotZ = 0f;
+	    float steeringWheelRotZ = 0f;
 
         //Steer left
         if (Input.GetKey(KeyCode.A))
@@ -85,7 +86,7 @@ public class BoatEngine : MonoBehaviour
 	        }
 	        else
 	        {
-		        wheelRotZ += _steeringWheelSpeed * Time.deltaTime;
+		        steeringWheelRotZ += _steeringWheelSpeed * Time.deltaTime;
 	        }
 
             Vector3 newRotation = new Vector3(0f, WaterJetRotation_Y, 0f);
@@ -103,7 +104,7 @@ public class BoatEngine : MonoBehaviour
             }
 			else
             {
-	            wheelRotZ -= _steeringWheelSpeed * Time.deltaTime;
+	            steeringWheelRotZ -= _steeringWheelSpeed * Time.deltaTime;
             }
 
             Vector3 newRotation = new Vector3(0f, WaterJetRotation_Y, 0f);
@@ -114,8 +115,20 @@ public class BoatEngine : MonoBehaviour
 	    _steeringWheel.transform.rotation = Quaternion.Euler(
 		    _steeringWheel.transform.rotation.eulerAngles.x,
 		    _steeringWheel.transform.rotation.eulerAngles.y,
-		    _steeringWheel.transform.rotation.eulerAngles.z + wheelRotZ);
+		    _steeringWheel.transform.rotation.eulerAngles.z + steeringWheelRotZ);
     }
+	float angleBetweenLinesInRad(Vector3 line1Start, Vector3 line1End, Vector3 line2Start, Vector3 line2End)
+	{
+		float a = line1End.x - line1Start.x;
+		float b = line1End.y - line1Start.y;
+		float c = line2End.x - line2Start.x;
+		float d = line2End.y - line2Start.y;
+		
+		float atanA = Mathf.Atan2(a, b);
+		float atanB = Mathf.Atan2(c, d);
+
+		return atanA - atanB;
+	}
 
     void UpdateWaterJet()
     {
@@ -124,7 +137,26 @@ public class BoatEngine : MonoBehaviour
         Vector3 forceToAdd = waterJetTransform.forward * currentJetPower;
 
         boatRB.AddForceAtPosition(forceToAdd, waterJetTransform.position);
-        /*//Only add the force if the engine is below sea level
+
+	    var a = waterJetTransform.localEulerAngles.y;
+	    a = a >= 330f ? -(360f - a) : a;
+
+	    var l = _paddleWheelSpeed * (a > 0f ? a / 30f : 0f);
+	    var r = _paddleWheelSpeed * (a <= 0f ? -a/30f : 0f);
+
+	    _leftPaddleWheel.transform.localRotation *=
+		    Quaternion.Euler(
+			    (ShipManager.Singleton.Speed + l) * Time.deltaTime,
+			    0f,
+			    0f);
+		
+	    _rightPaddleWheel.transform.localRotation *=
+		    Quaternion.Euler(
+				(ShipManager.Singleton.Speed + r) * Time.deltaTime,
+			    0f,
+			    0f);
+
+	    /*//Only add the force if the engine is below sea level
         float waveYPos = WaterController.current.GetWaveYPos(waterJetTransform.position, Time.time);
 
         if (waterJetTransform.position.y < waveYPos)
