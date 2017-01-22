@@ -144,13 +144,13 @@ public class BoatEngine : MonoBehaviour
 	    var l = _paddleWheelSpeed * (a > 0f ? a / 30f : 0f);
 	    var r = _paddleWheelSpeed * (a <= 0f ? -a/30f : 0f);
 
-	    _leftPaddleWheel.transform.localRotation *=
+	    _rightPaddleWheel.transform.localRotation *=
 		    Quaternion.Euler(
 			    (ShipManager.Singleton.Speed + l) * Time.deltaTime,
 			    0f,
 			    0f);
 		
-	    _rightPaddleWheel.transform.localRotation *=
+	    _leftPaddleWheel.transform.localRotation *=
 		    Quaternion.Euler(
 				(ShipManager.Singleton.Speed + r) * Time.deltaTime,
 			    0f,
