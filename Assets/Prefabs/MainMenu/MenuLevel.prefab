@@ -1524,7 +1524,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607915891814786}
   m_LocalRotation: {x: 0.1501574, y: 0.29155305, z: 0.046396945, w: -0.94355553}
-  m_LocalPosition: {x: -538.0691, y: -307.19397, z: -39.59565}
+  m_LocalPosition: {x: -538.0691, y: -307.19394, z: -39.59565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4007665777934314}
@@ -4109,7 +4109,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 224980453323454196}
   m_HandleRect: {fileID: 224070636578342874}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -60
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
@@ -4267,7 +4267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 57
-    m_Right: 70
+    m_Right: 75
     m_Top: 15
     m_Bottom: 51
   m_ChildAlignment: 0
@@ -4687,7 +4687,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 224687557881495102}
   m_HandleRect: {fileID: 224152133874407408}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -60
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
@@ -5375,7 +5375,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 224488663161826362}
   m_HandleRect: {fileID: 224036220174086256}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -60
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
