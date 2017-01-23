@@ -65,7 +65,7 @@ public class CrateManager : MonoBehaviour {
     /// Destroys collecte crate, spawns one on deck and if needed another water crate
     /// </summary>
     /// <param name="collectedCrate">Reference to the collected crate's gameobject</param>
-    public void OnCrateScore(GameObject collectedCrate)
+    public void OnCrateScore(GameObject collectedCrate, bool isCrateOnUpperDeck)
     {
         // Delete collected crate
         Destroy(collectedCrate);
@@ -74,6 +74,11 @@ public class CrateManager : MonoBehaviour {
         GameManager.highscore++;
 
 		AudioManager.Singleton.PlayEffect(AudioManager.Singleton._crateScore);
+
+	    if (isCrateOnUpperDeck)
+	    {
+		    LowerDeckManager.Singleton.OnUpperDeckCrateScore();
+	    }
     }
     
     /// <summary>

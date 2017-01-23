@@ -5,13 +5,9 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour {
 
 	public float _speedX, _speedY, _rotXMin, _rotXMax, _rotYMin, _rotYMax = 5f;
+	public bool _isGamePad;
 
-	Transform _camera;
-
-	void Awake()
-	{
-		_camera = Camera.main.transform;
-	}
+	public Transform _camera;
 
 	void Update()
 	{
@@ -22,8 +18,8 @@ public class CameraMovement : MonoBehaviour {
 		var rotY = _camera.localRotation;
 		var rotX = transform.localRotation;
 
-		rotY *= Quaternion.Euler(new Vector3(-Input.GetAxis("Mouse Y"), 0f, 0f));
-		rotX *= Quaternion.Euler(new Vector3(0f, Input.GetAxis("Mouse X"), 0f));
+		rotY *= Quaternion.Euler(new Vector3(-Input.GetAxis(_isGamePad ? "GamePadRightY" : "Mouse Y"), 0f, 0f));
+		rotX *= Quaternion.Euler(new Vector3(0f, Input.GetAxis(_isGamePad ? "GamePadRightX" : "Mouse X"), 0f));
 
 		// Clamp rotation
 		rotY = RotationClamp.ClampAroundAxis(rotY, RotationClamp.Axis.X, _rotYMin, _rotYMax);

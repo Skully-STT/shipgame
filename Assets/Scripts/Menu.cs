@@ -19,6 +19,7 @@ public class Menu : MonoBehaviour {
     private void LoadLevel()
     {
         SceneManager.LoadScene(levelToLoad);
+		SceneManager.LoadScene(levelToLoad + 1, LoadSceneMode.Additive);
     }
 
 	public virtual void OnExitClick()
