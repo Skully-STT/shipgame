@@ -8,6 +8,27 @@ public class Menu : MonoBehaviour {
     public Image fadeScreen;
     public float duration;
     private int levelToLoad;
+	public Controller _leftController, _rightController;
+
+	void Update()
+	{
+		if (_leftController == null || _rightController == null)
+		{
+			return;
+		}
+
+		if (_leftController.triggerButtonDown || _rightController.triggerButtonDown)
+		{
+			OnLevelSelect(1);
+			return;
+		}
+
+		if (_leftController.gripButtonDown || _rightController.gripButtonDown)
+		{
+			OnExitClick();
+			return;
+		}
+	}
 
 	public virtual void OnLevelSelect(int _level)
 	{

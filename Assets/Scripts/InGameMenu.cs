@@ -107,6 +107,7 @@ public class InGameMenu : Menu
 
     public void LoadLevel()
     {
+	    Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
